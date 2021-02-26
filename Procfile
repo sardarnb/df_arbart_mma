@@ -1,2 +1,2 @@
-web: gunicorn arbart_dash:server --preload
+web: gunicorn arbart_dash:app --preload
 #try web: gunicorn index:app --preload

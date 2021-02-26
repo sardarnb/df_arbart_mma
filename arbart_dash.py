@@ -11,6 +11,8 @@ from dash.dependencies import Input, Output, State
 
 app = dash.Dash(__name__)
 
+server = app.server
+
 app.layout = dbc.Container([
     html.H1('Arb finder - Bart'),
     html.H3('View Golf Matchups between BT and BM'),
@@ -97,4 +99,4 @@ def show_matches(x):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)

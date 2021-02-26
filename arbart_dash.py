@@ -72,7 +72,7 @@ app.layout = dbc.Container([
     [Input('refresh-match-table','n_clicks'),
      ])
 def show_matches(x):
-    df = pd.read_csv('https://raw.githubusercontent.com/sardarnb/df_arbart/main/dff_bart.csv')
+    df = pd.read_csv('https://raw.githubusercontent.com/sardarnb/df_arbart/main/df_arbart.csv')
     df = df[['match_time_bm', 'away_player', 'home_player', 'away_decimal_odds_bm', 'home_decimal_odds_bm',
              'match_time_bto', 'away_decimal_odds_bto', 'home_decimal_odds_bto', 'best_away', 'best_home', 'cum_prob',
              'log_time']]

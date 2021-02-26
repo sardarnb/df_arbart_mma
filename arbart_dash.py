@@ -12,7 +12,8 @@ from dash.dependencies import Input, Output, State
 app = dash.Dash(__name__)
 
 app.layout = dbc.Container([
-    html.H3('View Users'),
+    html.H1('Arb finder - Bart'),
+    html.H3('View Golf Matchups between BT and BM'),
     dbc.Button('Refresh', id='refresh-match-table'),
     dt.DataTable(
         id='match_table',

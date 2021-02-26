@@ -36,7 +36,23 @@ app.layout = dbc.Container([
                  # {'name': 'Well Name', 'id': 'well_nm'}
                  ],
         # data=[],
-        row_selectable='single',
+        # row_selectable='single',
+        style_cell_conditional=[
+            {
+                'if': {'column_id': c},
+                'textAlign': 'left'
+            } for c in ['away_player', 'home_player']
+        ],
+        style_data_conditional=[
+            {
+                'if': {'row_index': 'odd'},
+                'backgroundColor': 'rgb(248, 248, 248)'
+            }
+        ],
+        style_header={
+            'backgroundColor': 'rgb(230, 230, 230)',
+            'fontWeight': 'bold'
+        },
         style_data={
             'whiteSpace': 'normal',
             'height': 'auto',

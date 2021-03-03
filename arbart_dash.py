@@ -33,13 +33,14 @@ app.layout = dbc.Container([
     Input('interval-component', 'n_intervals'),
      ])
 def show_matches(x, y):
-    df_matchups = pd.read_csv('https://raw.githubusercontent.com/sardarnb/df_arbart/main/df_arbart.csv')
-    df = df_matchups[['match_time_bm', 'away_player', 'home_player', 'away_decimal_odds_bm', 'home_decimal_odds_bm',
-             'match_time_bto', 'away_decimal_odds_bto', 'home_decimal_odds_bto', 'best_away', 'best_home', 'cum_prob',
+    df_matchups = pd.read_csv(r'https://raw.githubusercontent.com/sardarnb/df_arbart/main/df_arbart.csv')
+    df = df_matchups[['match_time_bm','match_time_bto', 'away_player', 'home_player', 'away_decimal_odds_bm', 'home_decimal_odds_bm',
+             'away_decimal_odds_bto', 'home_decimal_odds_bto', 'best_away','best_book_away', 'best_home','best_book_home', 'cum_prob',
              'log_time']]
     df.log_time = pd.to_datetime(df.log_time)
+    df = df.drop_duplicates()
     # df.loc[df.log_time == df.log_time.max()]
-    data = df.tail(10).to_dict('records'),
+    data = df.loc[df.log_time == df.log_time.max()].to_dict('records'),
 
     m_table = dt.DataTable(
         id='match_table',
@@ -52,7 +53,9 @@ def show_matches(x, y):
                  {'name': 'away_decimal_odds_bto', 'id': 'away_decimal_odds_bto'},
                  {'name': 'home_decimal_odds_bto', 'id': 'home_decimal_odds_bto'},
                  {'name': 'best_away', 'id': 'best_away'},
+                 {'name':'best_book_away', 'id':'best_book_away'},
                  {'name': 'best_home', 'id': 'best_home'},
+                 {'name': 'best_book_home', 'id': 'best_book_home'},
                  {'name': 'cum_prob', 'id': 'cum_prob'},
                  {'name': 'log_time', 'id': 'log_time'},
                  ],

@@ -36,12 +36,12 @@ def show_matches(x, y):
     df_matchups = pd.read_csv(r'https://raw.githubusercontent.com/sardarnb/df_arbart/main/df_arbart.csv')
     df = df_matchups[['match_time_bm','match_time_bto', 'away_player', 'home_player', 'away_decimal_odds_bm', 'home_decimal_odds_bm',
              'away_decimal_odds_bto', 'home_decimal_odds_bto', 'best_away','best_book_away', 'best_home','best_book_home', 'cum_prob',
+            'cum_prob_spread','best_spread_away','best_spread_home','best_book_away_spread','best_book_home_spread',
              'log_time']]
     df.log_time = pd.to_datetime(df.log_time)
     df = df.drop_duplicates()
     # df.loc[df.log_time == df.log_time.max()]
     data = df.loc[df.log_time == df.log_time.max()].to_dict('records'),
-
     m_table = dt.DataTable(
         id='match_table',
         columns=[{'name': 'match_time_bm', 'id': 'match_time_bm'},
@@ -57,6 +57,11 @@ def show_matches(x, y):
                  {'name': 'best_home', 'id': 'best_home'},
                  {'name': 'best_book_home', 'id': 'best_book_home'},
                  {'name': 'cum_prob', 'id': 'cum_prob'},
+                 {'name': 'cum_prob_spread', 'id': 'cum_prob_spread'},
+                 {'name': 'best_spread_away', 'id': 'best_spread_away'},
+                 {'name': 'best_spread_home', 'id': 'best_spread_home'},
+                 {'name': 'best_book_away_spread', 'id': 'best_book_away_spread'},
+                 {'name': 'best_book_home_spread', 'id': 'best_book_home_spread'},
                  {'name': 'log_time', 'id': 'log_time'},
                  ],
         data=data[0],
@@ -88,6 +93,7 @@ def show_matches(x, y):
         },
         filter_action="native",
     )
+
 
     return m_table
 

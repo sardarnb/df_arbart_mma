@@ -37,7 +37,7 @@ def show_matches(x, y):
     df = df_matchups[['match_time_bm','match_time_bto', 'away_player', 'home_player', 'away_decimal_odds_bm', 'home_decimal_odds_bm',
              'away_decimal_odds_bto', 'home_decimal_odds_bto', 'best_away','best_book_away', 'best_home','best_book_home', 'cum_prob',
             'cum_prob_spread','best_spread_away','best_spread_home','best_book_away_spread','best_book_home_spread',
-             'log_time']]
+             'log_time','tournament_flg']]
     df.log_time = pd.to_datetime(df.log_time)
     df = df.drop_duplicates()
     # df.loc[df.log_time == df.log_time.max()]
@@ -63,6 +63,7 @@ def show_matches(x, y):
                  {'name': 'best_book_away_spread', 'id': 'best_book_away_spread'},
                  {'name': 'best_book_home_spread', 'id': 'best_book_home_spread'},
                  {'name': 'log_time', 'id': 'log_time'},
+                 {'name': 'tournament_flg', 'id': 'tournament_flg'}
                  ],
         data=data[0],
         # row_selectable='single',

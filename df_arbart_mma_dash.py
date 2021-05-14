@@ -33,7 +33,7 @@ app.layout = dbc.Container([
     Input('interval-component', 'n_intervals'),
      ])
 def show_matches(x, y):
-    df_matchups = pd.read_csv(r'https://raw.githubusercontent.com/sardarnb/df_arbart/main/df_arbart_mma.csv')
+    df_matchups = pd.read_csv(r'https://raw.githubusercontent.com/sardarnb/df_arbart_mma/main/df_arbart_mma.csv')
     df = df_matchups[['awayteam','hometeam'	,'description_x','best_away'	,'best_home',
                       'best_book_home','best_book_away'	,'cum_prob'	,'log_time']]
     df.log_time = pd.to_datetime(df.log_time)

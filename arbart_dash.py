@@ -21,7 +21,7 @@ app.layout = dbc.Container([
     dbc.Spinner(html.Div(id='match_table_show')),
     dcc.Interval(
         id='interval-component',
-        interval=60 * 1000,  # in milliseconds
+        interval= 2 * 60 * 1000,  # in milliseconds
         n_intervals=0
     )
 ])
